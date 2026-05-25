@@ -1,0 +1,200 @@
+:root {
+    --primary: #1e3a8a; /* Deep Navy */
+    --secondary: #3b82f6; /* Steel Blue */
+    --bg-dark: #0f172a; /* Slate Black */
+    --bg-card: #1e293b; /* Lighter Black */
+    --text-white: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #10b981; /* Emerald for success */
+    --danger: #ef4444; /* Red for alerts */
+    --sidebar-width: 250px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: #020617;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-right: 1px solid #1e293b;
+    position: fixed;
+    height: 100vh;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    padding: 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Dashboard Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid #334155;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.card .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Tables */
+.table-container {
+    background-color: var(--bg-card);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-top: 2rem;
+    border: 1px solid #334155;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #334155;
+}
+
+th {
+    background-color: #0f172a;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #1e293b;
+}
+
+/* Forms & UI Elements */
+input, select, button {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #334155;
+    background-color: #0f172a;
+    color: white;
+    outline: none;
+}
+
+button {
+    background-color: var(--primary);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: var(--secondary);
+}
+
+button.btn-danger {
+    background-color: var(--danger);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 400px;
+    border: 1px solid #334155;
+}
+
+/* Low Stock Alert */
+.low-stock {
+    color: var(--danger);
+    font-weight: bold;
+}
+
+/* Print Receipt Styles */
+@media print {
+    .sidebar, .main-content > header, .main-content > .stats-grid, .btn-print, .no-print {
+        display: none !important;
+    }
+    .main-content { margin-left: 0; padding: 0; }
+    .receipt {
+        color: black;
+        background: white;
+        padding: 20px;
+        width: 300px;
+    }
+}
